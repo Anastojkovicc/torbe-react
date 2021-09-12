@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './App.css';
 import TorbiceForm from './components/TorbiceForm';
 import TorbiceLista from './components/TorbiceLista';
@@ -7,8 +7,21 @@ import Welcome from './components/Welcome';
 import Nav from './components/Nav';
 import { Route, Switch , BrowserRouter } from 'react-router-dom';
 
+const LOCAL_STORAGE_KEY = "torbice-torbice";
+
 function App() {
   const[torbice, setTorbice]=useState([]);
+
+  useEffect(()=> {
+    const storageTorbice = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if(storageTorbice){
+      setTorbice(storageTorbice);
+    }
+  } , []);
+
+  useEffect(()=> {
+    localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(torbice));
+  }, [torbice]);
 
   function dodajTorbicu(torbica){
     setTorbice([torbica,...torbice]);
