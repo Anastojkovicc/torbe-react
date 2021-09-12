@@ -1,22 +1,25 @@
 import logo from './logo.svg';
+import React, {useState} from "react";
 import './App.css';
+import TorbiceForm from './components/TorbiceForm';
+import TorbiceLista from './components/TorbiceLista';
 
 function App() {
+  const[torbice, setTorbice]=useState([]);
+
+  function dodajTorbicu(torbica){
+    setTorbice([torbica,...torbice]);
+  }
+
+  function obrisiTorbicu(id){
+    setTorbice(torbice.filter(torbica=> torbica.id !== id));
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <TorbiceForm dodajTorbicu={dodajTorbicu}/>
+        <TorbiceLista torbice={torbice} obrisiTorbicu={obrisiTorbicu} />
       </header>
     </div>
   );
