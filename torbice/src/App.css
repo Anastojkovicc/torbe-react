@@ -49,13 +49,6 @@ font-size: 30px;
   }
 }
 
-.menu{
-  margin-top: 0px;
-  min-height: 50px;
-  justify-content: center;
-  display: inline-block;
-  padding-left: 0px;
-}
 
 .combo{
   background-color: rgb(255, 255, 255,0.8);
@@ -72,9 +65,33 @@ p{
 }
 
 .menu li{
-  border: black solid 5px;
+  float:left;
+  padding-left: 70px;
   background-color: rgba(216,31,75);
+  display: right;
 }
+
+.menu{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(216,31,75);
+  top: 0;
+  width: 100%;
+  border-radius: 30px;
+  min-height: 50px;
+  margin-bottom: 30px;
+  
+}
+
+.menu li a{
+  display: flex;
+  color: black;
+  padding: 14px 30px;
+  text-decoration: none;
+} 
+
 
 
 li{
